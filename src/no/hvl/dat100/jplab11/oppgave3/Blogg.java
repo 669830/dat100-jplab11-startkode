@@ -5,47 +5,92 @@ import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
+	protected Innlegg[] innleggtabell;
+
+	protected int nesteledig;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		this.innleggtabell = new Innlegg[20];
+		nesteledig = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		this.innleggtabell = new Innlegg[lengde];
+		nesteledig = 0;
+
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return nesteledig;
 	}
-	
+
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
+		return new Innlegg[innleggtabell.length];
 
 	}
-	
+		
 	public int finnInnlegg(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		//throw new UnsupportedOperationException(TODO.method());
+		boolean funnet = false;
+		int pos = 0;
+		
+		while(pos<nesteledig && !funnet) {
+			if(innleggtabell[pos].erLik(innlegg)) 
+				funnet = true;
+			else
+					pos++;
+		}
+			if(funnet)
+				return pos;
+			else
+				return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		
+		boolean funnet = false;
+		int pos = finnInnlegg(innlegg);
+		if(pos>=0)
+			return funnet = true;
+		else
+			return funnet = false;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
+		
+		boolean ledig;
+		
+		if(nesteledig < innleggtabell.length)
+			return ledig = true;
+		else
+			return ledig = false;
 
 	}
-	
+
 	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		boolean legg = false;
+		if(ledigPlass()) {
+			innleggtabell[nesteledig]=innlegg;
+			nesteledig++;
+			return legg = true;
+		}
+		else 
+			return legg;
 	}
-	
+
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		String str = nesteledig + "\n";
+		
+		for (int pos = 0; pos < nesteledig; pos++) {
+			
+			str += innleggtabell[pos].toString();
+			
+		}
+		return str;
 	}
+
 
 	// valgfrie oppgaver nedenfor
 	
