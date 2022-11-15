@@ -1,5 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave4;
-//hei
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
